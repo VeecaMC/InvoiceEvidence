@@ -1,0 +1,18 @@
+﻿{
+  "applications": {
+    "InvoiceEvidence.HttpApi.Host": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44321",
+      "path": "../../../src/InvoiceEvidence.HttpApi.Host/InvoiceEvidence.HttpApi.Host.csproj",
+      "kubernetesService": ".*-httpapihost$",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "execution": {
+        "order": 4
+      }
+    }
+  },
+  "containers": {
+    "serviceName": "InvoiceEvidence-Containers",
+  }
+}

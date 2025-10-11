@@ -1,0 +1,103 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.3.5",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.3.5",
+      "isInstalled": true,
+      "creationTime": "10/09/2025 12:07:20 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "InvoiceEvidence.Application": {
+      "path": "src/InvoiceEvidence.Application/InvoiceEvidence.Application.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.Application.Tests": {
+      "path": "test/InvoiceEvidence.Application.Tests/InvoiceEvidence.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "InvoiceEvidence.Domain.Shared": {
+      "path": "src/InvoiceEvidence.Domain.Shared/InvoiceEvidence.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.Application.Contracts": {
+      "path": "src/InvoiceEvidence.Application.Contracts/InvoiceEvidence.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.HttpApi": {
+      "path": "src/InvoiceEvidence.HttpApi/InvoiceEvidence.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.HttpApi.Client": {
+      "path": "src/InvoiceEvidence.HttpApi.Client/InvoiceEvidence.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.EntityFrameworkCore.Tests": {
+      "path": "test/InvoiceEvidence.EntityFrameworkCore.Tests/InvoiceEvidence.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "InvoiceEvidence.EntityFrameworkCore": {
+      "path": "src/InvoiceEvidence.EntityFrameworkCore/InvoiceEvidence.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.TestBase": {
+      "path": "test/InvoiceEvidence.TestBase/InvoiceEvidence.TestBase.abppkg",
+      "folder": "test"
+    },
+    "InvoiceEvidence.Domain.Tests": {
+      "path": "test/InvoiceEvidence.Domain.Tests/InvoiceEvidence.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "InvoiceEvidence.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/InvoiceEvidence.HttpApi.Client.ConsoleTestApp/InvoiceEvidence.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "InvoiceEvidence.DbMigrator": {
+      "path": "src/InvoiceEvidence.DbMigrator/InvoiceEvidence.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.HttpApi.Host": {
+      "path": "src/InvoiceEvidence.HttpApi.Host/InvoiceEvidence.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "InvoiceEvidence.Domain": {
+      "path": "src/InvoiceEvidence.Domain/InvoiceEvidence.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}
