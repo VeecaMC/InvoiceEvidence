@@ -27,7 +27,7 @@ namespace InvoiceEvidence.Invoices
         {
             var queryable = await _repository.GetQueryableAsync();
             var query = queryable
-                .OrderBy(input.Sorting.IsNullOrWhiteSpace() ? "IssueDate" : input.Sorting)
+                .OrderBy(input.Sorting.IsNullOrWhiteSpace() ? nameof(Invoice.IssueDate) : input.Sorting)
                 .Skip(input.SkipCount)
                 .Take(input.MaxResultCount);
 
