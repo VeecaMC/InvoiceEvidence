@@ -24,7 +24,12 @@ public abstract class InvoiceAppService_Tests<TStartupModule> : InvoiceEvidenceA
     {
         //Act
         var result = await _invoiceAppService.GetInvoicesListAsync(
-            new PagedAndSortedResultRequestDto()
+            new GetInvoiceListDto()
+            {
+                SkipCount = 0,
+                MaxResultCount = 10,
+                Sorting = "IssueDate"
+            }
         );
 
         //Assert

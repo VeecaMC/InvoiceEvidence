@@ -17,6 +17,22 @@ namespace InvoiceEvidence.Invoices
         }
 
         [Fact]
+        public async Task GetInvoiceListDto_Sorting_Cannot_Be_Invalid()
+        {
+            // Act + Assert
+            await Assert.ThrowsAsync<AbpValidationException>(async () =>
+            {
+                var result = await _invoiceAppService.GetInvoicesListAsync(
+                new GetInvoiceListDto()
+                {
+                    SkipCount = 0,
+                    MaxResultCount = 10,
+                    Sorting = "abc"
+                });
+            });
+        }
+
+        [Fact]
         public async Task UpdateInvoiceStateDto_InvoiceId_Cannot_Be_Empty_Guid()
         {
             // Act + Assert

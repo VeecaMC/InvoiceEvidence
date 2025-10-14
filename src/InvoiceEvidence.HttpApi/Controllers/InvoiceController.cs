@@ -31,9 +31,9 @@ namespace InvoiceEvidence.Controllers
         }
 
         [HttpGet("list")]
-        public async Task<IActionResult> GetInvoiceList([FromQuery] PagedAndSortedResultRequestDto requestDto)
+        public async Task<IActionResult> GetInvoiceList([FromQuery] GetInvoiceListDto getInvoiceListDto)
         {
-            var result = await _invoiceAppService.GetInvoicesListAsync(requestDto);
+            var result = await _invoiceAppService.GetInvoicesListAsync(getInvoiceListDto);
             return Ok(result);
         }
 
