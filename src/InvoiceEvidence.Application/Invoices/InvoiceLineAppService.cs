@@ -16,7 +16,7 @@ namespace InvoiceEvidence.Invoices
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceLineDto?> CreateInvoiceLineAsync(CreateInvoiceLineDto createInvoiceLineDto)
+        public async Task<InvoiceLineDto> CreateInvoiceLineAsync(CreateInvoiceLineDto createInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(createInvoiceLineDto.InvoiceId);
 
@@ -31,7 +31,7 @@ namespace InvoiceEvidence.Invoices
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceLineDto?> UpdateInvoiceLineAsync(UpdateInvoiceLineDto updateInvoiceLineDto)
+        public async Task<InvoiceLineDto> UpdateInvoiceLineAsync(UpdateInvoiceLineDto updateInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(updateInvoiceLineDto.InvoiceId);
 

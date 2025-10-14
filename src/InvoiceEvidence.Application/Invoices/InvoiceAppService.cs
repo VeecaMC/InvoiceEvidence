@@ -21,7 +21,7 @@ namespace InvoiceEvidence.Invoices
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Default)]
-        public async Task<PagedResultDto<InvoiceListItemDto>?> GetInvoicesListAsync(PagedAndSortedResultRequestDto input)
+        public async Task<PagedResultDto<InvoiceListItemDto>> GetInvoicesListAsync(PagedAndSortedResultRequestDto input)
         {
             var queryable = await _repository.GetQueryableAsync();
             var query = queryable
@@ -39,14 +39,14 @@ namespace InvoiceEvidence.Invoices
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Default)]
-        public async Task<InvoiceDto?> GetInvoiceByIdAsync(Guid id)
+        public async Task<InvoiceDto> GetInvoiceByIdAsync(Guid id)
         {
             var invoice = await _repository.GetAsync(x => x.InvoiceId == id);
             return ObjectMapper.Map<Invoice, InvoiceDto>(invoice);
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Create)]
-        public async Task<InvoiceDto?> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto)
+        public async Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto)
         {
             var invoice = ObjectMapper.Map<CreateInvoiceDto, Invoice>(createInvoiceDto);
             invoice.State = InvoiceState.Created;
@@ -56,7 +56,7 @@ namespace InvoiceEvidence.Invoices
         }
 
         //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceDto?> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto)
+        public async Task<InvoiceDto> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto)
         {
             var invoice = await _repository.GetAsync(x => x.InvoiceId == updateInvoiceStateDto.InvoiceId);
 

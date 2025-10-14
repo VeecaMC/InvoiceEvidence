@@ -6,13 +6,13 @@ namespace InvoiceEvidence.Invoices
 {
     public interface IInvoiceAppService
     {
-        public Task<PagedResultDto<InvoiceListItemDto>?> GetInvoicesListAsync(PagedAndSortedResultRequestDto sortedResultRequestDto);
+        public Task<PagedResultDto<InvoiceListItemDto>> GetInvoicesListAsync(PagedAndSortedResultRequestDto sortedResultRequestDto);
 
-        public Task<InvoiceDto?> GetInvoiceByIdAsync(Guid id);
+        public Task<InvoiceDto> GetInvoiceByIdAsync(Guid id);
 
-        public Task<InvoiceDto?> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto);
+        public Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto);
 
-        public Task<InvoiceDto?> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto);
+        public Task<InvoiceDto> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto);
 
         public Task EnsureInvoiceExistsInCreatedStateAsync(Guid invoiceId);
 
