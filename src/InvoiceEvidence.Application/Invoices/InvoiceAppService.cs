@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InvoiceEvidence.Permissions;
+using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace InvoiceEvidence.Invoices
             _repository = repository;
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Default)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Default)]
         public async Task<PagedResultDto<InvoiceListItemDto>> GetInvoicesListAsync(PagedAndSortedResultRequestDto input)
         {
             var queryable = await _repository.GetQueryableAsync();
@@ -38,14 +40,14 @@ namespace InvoiceEvidence.Invoices
             );
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Default)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Default)]
         public async Task<InvoiceDto> GetInvoiceByIdAsync(Guid id)
         {
             var invoice = await _repository.GetAsync(x => x.InvoiceId == id);
             return ObjectMapper.Map<Invoice, InvoiceDto>(invoice);
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Create)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Create)]
         public async Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto)
         {
             var invoice = ObjectMapper.Map<CreateInvoiceDto, Invoice>(createInvoiceDto);
@@ -55,7 +57,7 @@ namespace InvoiceEvidence.Invoices
             return ObjectMapper.Map<Invoice, InvoiceDto>(invoice);
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
         public async Task<InvoiceDto> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto)
         {
             var invoice = await _repository.GetAsync(x => x.InvoiceId == updateInvoiceStateDto.InvoiceId);

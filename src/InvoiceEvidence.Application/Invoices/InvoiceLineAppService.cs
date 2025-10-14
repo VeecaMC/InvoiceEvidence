@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using InvoiceEvidence.Permissions;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
@@ -15,7 +17,7 @@ namespace InvoiceEvidence.Invoices
             _invoiceAppService = invoiceAppService;
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
         public async Task<InvoiceLineDto> CreateInvoiceLineAsync(CreateInvoiceLineDto createInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(createInvoiceLineDto.InvoiceId);
@@ -30,7 +32,7 @@ namespace InvoiceEvidence.Invoices
             return ObjectMapper.Map<InvoiceLine, InvoiceLineDto>(invoiceLine);
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
         public async Task<InvoiceLineDto> UpdateInvoiceLineAsync(UpdateInvoiceLineDto updateInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(updateInvoiceLineDto.InvoiceId);
@@ -47,7 +49,7 @@ namespace InvoiceEvidence.Invoices
             return ObjectMapper.Map<InvoiceLine, InvoiceLineDto>(invoiceLine);
         }
 
-        //[Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
+        [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
         public async Task DeleteInvoiceLineAsync(DeleteInvoiceLineDto deleteInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(deleteInvoiceLineDto.InvoiceId);
