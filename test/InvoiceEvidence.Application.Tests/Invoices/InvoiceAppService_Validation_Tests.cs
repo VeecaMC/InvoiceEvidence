@@ -38,7 +38,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceAppService.UpdateInvoiceStateAsync(
+                await _invoiceAppService.UpdateInvoiceStateAsync(
                 new UpdateInvoiceStateDto()
                 {
                     InvoiceId = Guid.Empty,
@@ -53,7 +53,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceAppService.CreateInvoiceAsync(
+                await _invoiceAppService.CreateInvoiceAsync(
                 new CreateInvoiceDto
                 {
                     IssueDate = DateTime.UtcNow,
@@ -68,7 +68,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceAppService.CreateInvoiceAsync(
+                await _invoiceAppService.CreateInvoiceAsync(
                 new CreateInvoiceDto
                 {
                     IssueDate = DateTime.UtcNow,

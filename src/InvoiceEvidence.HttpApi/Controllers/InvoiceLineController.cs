@@ -17,15 +17,15 @@ namespace InvoiceEvidence.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateInvoiceLineAsync([FromBody]CreateInvoiceLineDto createInvoiceLineDto)
         {
-            var result = await _invoiceLineAppService.CreateInvoiceLineAsync(createInvoiceLineDto);
-            return Ok(result);
+            await _invoiceLineAppService.CreateInvoiceLineAsync(createInvoiceLineDto);
+            return Created();
         }
 
         [HttpPut("update")]
         public async Task<IActionResult> UpdateInvoiceLineAsync([FromBody] UpdateInvoiceLineDto updateInvoiceLineDto)
         {
-            var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(updateInvoiceLineDto);
-            return Ok(result);
+            await _invoiceLineAppService.UpdateInvoiceLineAsync(updateInvoiceLineDto);
+            return NoContent();
         }
 
         [HttpDelete("delete")]

@@ -1,11 +1,10 @@
 ﻿using Shouldly;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Modularity;
 using Xunit;
+using System.Linq;
 
 namespace InvoiceEvidence.Invoices;
 
@@ -69,7 +68,7 @@ public abstract class InvoiceAppService_Tests<TStartupModule> : InvoiceEvidenceA
     public async Task Should_Change_Invoice_State()
     {
         //Act
-        var result = await _invoiceAppService.UpdateInvoiceStateAsync(
+        await _invoiceAppService.UpdateInvoiceStateAsync(
             new UpdateInvoiceStateDto()
             {
                 InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -78,9 +77,10 @@ public abstract class InvoiceAppService_Tests<TStartupModule> : InvoiceEvidenceA
         );
 
         // Assert
-        result.ShouldNotBeNull();
-        result.State.ShouldNotBe(InvoiceState.Created);
-        result.State.ShouldBe(InvoiceState.Approved);
+        var response = await _invoiceAppService.GetInvoicesListAsync(new GetInvoiceListDto());
+        var item = response.Items.First(x => x.InvoiceId == InvoiceEvidenceTestConsts.CreatedInvoiceId);
+
+        Assert.True(item.State.Equals(InvoiceState.Approved));
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public abstract class InvoiceAppService_Tests<TStartupModule> : InvoiceEvidenceA
         //Act + Assert
         await Assert.ThrowsAsync<EntityNotFoundException>(async () =>
         {
-            var result = await _invoiceAppService.UpdateInvoiceStateAsync(
+            await _invoiceAppService.UpdateInvoiceStateAsync(
             new UpdateInvoiceStateDto()
             {
                 InvoiceId = Guid.Parse("bc1b20dd-0bff-44d4-b780-ca2b4227296c"), // Non-existing InvoiceId
@@ -103,24 +103,19 @@ public abstract class InvoiceAppService_Tests<TStartupModule> : InvoiceEvidenceA
     {
         // Arrange
         var issueDate = DateTime.UtcNow;
+        var invoiceNumber = 546132131;
 
         //Act
-        var result = await _invoiceAppService.CreateInvoiceAsync(
+        await _invoiceAppService.CreateInvoiceAsync(
             new CreateInvoiceDto
             {
                 IssueDate = issueDate,
-                InvoiceNumber = 4
+                InvoiceNumber = invoiceNumber
             }
         );
 
         //Assert
-        result.ShouldNotBeNull();
-        result.InvoiceId.ShouldNotBe(Guid.Empty);
-        result.InvoiceNumber.ShouldBe(4);
-        result.IssueDate.ShouldBe(issueDate);
-        result.State.ShouldBe(InvoiceState.Created);
-        result.InvoiceLines.ShouldNotBeNull();
-        result.InvoiceLines.ShouldBeEmpty();
-        result.TotalAmount.ShouldBe(0);
+        var response = await _invoiceAppService.GetInvoicesListAsync(new GetInvoiceListDto());
+        response.Items.ShouldContain(x => x.IssueDate == issueDate && x.InvoiceNumber == invoiceNumber);
     }
 }

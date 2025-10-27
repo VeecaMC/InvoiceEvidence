@@ -10,9 +10,9 @@ namespace InvoiceEvidence.Invoices
 
         public Task<InvoiceDto> GetInvoiceByIdAsync(Guid id);
 
-        public Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto);
+        public Task CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto);
 
-        public Task<InvoiceDto> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto);
+        public Task UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto);
 
         public Task EnsureInvoiceExistsInCreatedStateAsync(Guid invoiceId);
 

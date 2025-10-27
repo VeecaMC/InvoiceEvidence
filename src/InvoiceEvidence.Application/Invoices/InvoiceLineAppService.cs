@@ -18,7 +18,7 @@ namespace InvoiceEvidence.Invoices
         }
 
         [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceLineDto> CreateInvoiceLineAsync(CreateInvoiceLineDto createInvoiceLineDto)
+        public async Task CreateInvoiceLineAsync(CreateInvoiceLineDto createInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(createInvoiceLineDto.InvoiceId);
 
@@ -28,12 +28,10 @@ namespace InvoiceEvidence.Invoices
             await _repository.InsertAsync(invoiceLine, true);
 
             await _invoiceAppService.RecalculateInvoiceTotalAmount(createInvoiceLineDto.InvoiceId);
-
-            return ObjectMapper.Map<InvoiceLine, InvoiceLineDto>(invoiceLine);
         }
 
         [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceLineDto> UpdateInvoiceLineAsync(UpdateInvoiceLineDto updateInvoiceLineDto)
+        public async Task UpdateInvoiceLineAsync(UpdateInvoiceLineDto updateInvoiceLineDto)
         {
             await _invoiceAppService.EnsureInvoiceExistsInCreatedStateAsync(updateInvoiceLineDto.InvoiceId);
 
@@ -45,8 +43,6 @@ namespace InvoiceEvidence.Invoices
             await _repository.UpdateAsync(invoiceLine, true);
 
             await _invoiceAppService.RecalculateInvoiceTotalAmount(updateInvoiceLineDto.InvoiceId);
-
-            return ObjectMapper.Map<InvoiceLine, InvoiceLineDto>(invoiceLine);
         }
 
         [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]

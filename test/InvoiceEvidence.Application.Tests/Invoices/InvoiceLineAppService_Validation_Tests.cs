@@ -24,7 +24,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.CreateInvoiceLineAsync(
+                await _invoiceLineAppService.CreateInvoiceLineAsync(
                 new CreateInvoiceLineDto()
                 {
                     InvoiceId = Guid.Empty,
@@ -48,7 +48,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.CreateInvoiceLineAsync(
+                await _invoiceLineAppService.CreateInvoiceLineAsync(
                 new CreateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -65,7 +65,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.CreateInvoiceLineAsync(
+                await _invoiceLineAppService.CreateInvoiceLineAsync(
                 new CreateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -82,7 +82,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.CreateInvoiceLineAsync(
+                await _invoiceLineAppService.CreateInvoiceLineAsync(
                 new CreateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -99,7 +99,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.CreateInvoiceLineAsync(
+                await _invoiceLineAppService.CreateInvoiceLineAsync(
                 new CreateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -116,7 +116,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -134,7 +134,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -152,7 +152,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = Guid.Empty,
@@ -177,7 +177,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -195,7 +195,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -213,7 +213,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,
@@ -231,7 +231,7 @@ namespace InvoiceEvidence.Invoices
             // Act + Assert
             await Assert.ThrowsAsync<AbpValidationException>(async () =>
             {
-                var result = await _invoiceLineAppService.UpdateInvoiceLineAsync(
+                await _invoiceLineAppService.UpdateInvoiceLineAsync(
                 new UpdateInvoiceLineDto()
                 {
                     InvoiceId = InvoiceEvidenceTestConsts.CreatedInvoiceId,

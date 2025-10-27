@@ -48,24 +48,22 @@ namespace InvoiceEvidence.Invoices
         }
 
         [Authorize(InvoiceEvidencePermissions.Invoice.Create)]
-        public async Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto)
+        public async Task CreateInvoiceAsync(CreateInvoiceDto createInvoiceDto)
         {
             var invoice = ObjectMapper.Map<CreateInvoiceDto, Invoice>(createInvoiceDto);
             invoice.State = InvoiceState.Created;
+            invoice.TotalAmount = 0m;
 
             await _repository.InsertAsync(invoice, true);
-            return ObjectMapper.Map<Invoice, InvoiceDto>(invoice);
         }
 
         [Authorize(InvoiceEvidencePermissions.Invoice.Edit)]
-        public async Task<InvoiceDto> UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto)
+        public async Task UpdateInvoiceStateAsync(UpdateInvoiceStateDto updateInvoiceStateDto)
         {
             var invoice = await _repository.GetAsync(x => x.InvoiceId == updateInvoiceStateDto.InvoiceId);
 
             ObjectMapper.Map<UpdateInvoiceStateDto, Invoice>(updateInvoiceStateDto, invoice);
             await _repository.UpdateAsync(invoice, true);
-
-            return ObjectMapper.Map<Invoice, InvoiceDto>(invoice);
         }
 
         public async Task EnsureInvoiceExistsInCreatedStateAsync(Guid invoiceId)

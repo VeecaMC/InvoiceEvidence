@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
 
 namespace InvoiceEvidence.Controllers
 {
@@ -19,15 +18,15 @@ namespace InvoiceEvidence.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateInvoice([FromBody] CreateInvoiceDto createInvoiceDto)
         {
-            var result = await _invoiceAppService.CreateInvoiceAsync(createInvoiceDto);
-            return Ok(result);
+            await _invoiceAppService.CreateInvoiceAsync(createInvoiceDto);
+            return Created();
         }
 
         [HttpPatch("set-state")]
         public async Task<IActionResult> UpdateInvoiceState([FromBody] UpdateInvoiceStateDto updateInvoiceStateDto)
         {
-            var result = await _invoiceAppService.UpdateInvoiceStateAsync(updateInvoiceStateDto);
-            return Ok(result);
+            await _invoiceAppService.UpdateInvoiceStateAsync(updateInvoiceStateDto);
+            return NoContent();
         }
 
         [HttpGet("list")]
